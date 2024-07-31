@@ -132,12 +132,14 @@ const validateInputs = () => {
         consentBox.parentNode.classList.remove("error");
     }
 
-
-    if (firstnameError.textContent  === "" && lastnameError.textContent === "" && emailError.textContent === "" && consentError.textContent === "" && messageError.textContent === "" && queryError.textContent === "") {
-        form.submit();
-        document.getElementById("success-message").style.display = "block"; 
-        setTimeout(function(){
-            document.getElementById("success-message").style.display = "none"; 
-        },  100000);
-    }
+//Check for any errors
+if (firstnameError.textContent === "" && lastnameError.textContent === "" && emailError.textContent === "" && consentError.textContent === "" && messageError.textContent === "" && queryError.textContent === "") {
+    // Show success message
+    document.getElementById("success-message").style.display = "grid";
+    // Optionally reset the form fields
+    form.reset();
+} else {
+    // Hide success message if validation fails
+    document.getElementById("success-message").style.display = "none";
 }
+};
